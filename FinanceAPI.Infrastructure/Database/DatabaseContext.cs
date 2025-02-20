@@ -9,4 +9,10 @@ public class DatabaseContext : DbContext
     public DbSet<Employee> Employees { get; set; }
     public DbSet<Department> Departments { get; set; }
     public DbSet<PostTitle> PostTitles { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        DatabaseSeed.Seed(modelBuilder);
+    }
 }
