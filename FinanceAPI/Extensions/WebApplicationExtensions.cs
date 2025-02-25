@@ -1,4 +1,5 @@
-﻿using Scalar.AspNetCore;
+﻿using FinanceAPI.Endpoints;
+using Scalar.AspNetCore;
 using System.Globalization;
 
 namespace FinanceAPI.Extensions;
@@ -27,6 +28,13 @@ public static class WebApplicationExtensions
         }
 
         #endregion
+
+
+        #region MinimalApi
+
+        app.MapReferencesEndpoints();
+
+        #endregion 
 
         return app;
     }
