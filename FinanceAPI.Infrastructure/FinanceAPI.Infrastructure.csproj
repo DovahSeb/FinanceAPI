@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+	<ProjectReference Include="..\FinanceAPI.Application\FinanceAPI.Application.csproj" />
 	<ProjectReference Include="..\FinanceAPI.Domain\FinanceAPI.Domain.csproj" />
   </ItemGroup>
 
