@@ -5,7 +5,7 @@ using FinanceAPI.Infrastructure.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinanceAPI.Infrastructure.Persistence;
-public sealed class PostTitlesPersistence : IPostTitles
+public sealed class PostTitlesPersistence : IPostTitle
 {
     private readonly DatabaseContext _context;
 

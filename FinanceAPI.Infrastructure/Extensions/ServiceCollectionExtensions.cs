@@ -1,4 +1,5 @@
 ﻿using FinanceAPI.Application.Department;
+using FinanceAPI.Application.Employee;
 using FinanceAPI.Application.PostTitle;
 using FinanceAPI.Infrastructure.Database;
 using FinanceAPI.Infrastructure.Persistence;
@@ -15,8 +16,9 @@ public static class ServiceCollectionExtensions
 
         services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(defaultConnectionString));
 
-        services.AddScoped<IDepartments, DepartmentsPersistence>();
-        services.AddScoped<IPostTitles, PostTitlesPersistence>();
+        services.AddScoped<IEmployee, EmployeePersistence>();
+        services.AddScoped<IDepartment, DepartmentsPersistence>();
+        services.AddScoped<IPostTitle, PostTitlesPersistence>();
 
         return services;
     }

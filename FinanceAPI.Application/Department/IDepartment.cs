@@ -1,7 +1,7 @@
 ﻿using FinanceAPI.Application.Department.DTOs;
 
 namespace FinanceAPI.Application.Department;
-public interface IDepartments
+public interface IDepartment
 {
     Task<List<DepartmentResponseDto>> GetDepartments(CancellationToken cancellationToken);
 }

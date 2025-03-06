@@ -11,7 +11,7 @@ public class GetPostTitlesHandlerTests
     {
         //Arrange
         var request = new GetPostTitlesQuery();
-        var mockRepository = Substitute.For<IPostTitles>();
+        var mockRepository = Substitute.For<IPostTitle>();
         var handler = new GetPostTitlesHandler(mockRepository);
         var cancellationToken = CancellationToken.None;
 
@@ -33,7 +33,7 @@ public class GetPostTitlesHandlerTests
     {
         //Arrange
         var request = new GetPostTitlesQuery();
-        var mockRepository = Substitute.For<IPostTitles>();
+        var mockRepository = Substitute.For<IPostTitle>();
         var handler = new GetPostTitlesHandler(mockRepository);
         var cancellationToken = CancellationToken.None;
 

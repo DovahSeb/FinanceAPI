@@ -11,7 +11,7 @@ public class GetDepartmentsHandlerTests
     {
         //Arrange
         var request = new GetDepartmentsQuery();
-        var mockRepository = Substitute.For<IDepartments>();
+        var mockRepository = Substitute.For<IDepartment>();
         var handler = new GetDepartmentsHandler(mockRepository);
         var cancellationToken = CancellationToken.None;
 
@@ -33,7 +33,7 @@ public class GetDepartmentsHandlerTests
     {
         //Arrange
         var request = new GetDepartmentsQuery();
-        var mockRepository = Substitute.For<IDepartments>();
+        var mockRepository = Substitute.For<IDepartment>();
         var handler = new GetDepartmentsHandler(mockRepository);
         var cancellationToken = CancellationToken.None;
 

@@ -1,0 +1,2 @@
+﻿namespace FinanceAPI.Application.Employee.DTOs;
+public record EmployeeRequestDto(string FirstName, string LastName, DateOnly DateOfBirth, string Email, DateOnly DateJoined, int DepartmentId, int PostTitleId);

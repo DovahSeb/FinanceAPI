@@ -5,7 +5,7 @@ using FinanceAPI.Infrastructure.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinanceAPI.Infrastructure.Persistence;
-public sealed class DepartmentsPersistence : IDepartments
+public sealed class DepartmentsPersistence : IDepartment
 {
     private readonly DatabaseContext _context;
 
