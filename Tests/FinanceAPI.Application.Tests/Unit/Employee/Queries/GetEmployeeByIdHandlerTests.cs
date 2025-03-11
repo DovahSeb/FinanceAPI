@@ -1,7 +1,6 @@
 ﻿using FinanceAPI.Application.Employee;
 using FinanceAPI.Application.Employee.DTOs;
 using FinanceAPI.Application.Employee.Queries.GetEmployeeById;
-using Newtonsoft.Json.Linq;
 using NSubstitute;
 
 namespace FinanceAPI.Application.Tests.Unit.Employee.Queries;

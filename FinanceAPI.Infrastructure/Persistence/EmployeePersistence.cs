@@ -15,6 +15,22 @@ public sealed class EmployeePersistence : IEmployee
         _context = context;
     }
 
+    public async Task<List<EmployeeResponseDto>> GetEmployees(CancellationToken cancellationToken)
+    {
+        var employees = await _context.Employees
+            .Where(x => !x.Status.Equals("D") && x.IsActive)
+            .Include(x => x.Department)
+            .Include(x => x.PostTitle)
+            .AsNoTracking()
+            .ToListAsync(cancellationToken);
+
+        var employeesDto = employees
+            .Select(x => x.MapToEmployeeResponseDto())
+            .ToList();
+
+        return employeesDto;
+    }
+
     public async Task<EmployeeResponseDto> GetEmployeeById(int id, CancellationToken cancellationToken)
     {
         var employee = await _context.Employees
