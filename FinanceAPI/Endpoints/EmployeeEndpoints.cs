@@ -1,6 +1,8 @@
 ﻿using FinanceAPI.Application.Employee.Commands.CreateEmployee;
 using FinanceAPI.Application.Employee.DTOs;
 using FinanceAPI.Application.Employee.Queries.GetEmployeeById;
+using FinanceAPI.Application.Employee.Queries.GetEmployees;
+using FinanceAPI.Infrastructure.EmailService.BirthdayEmail;
 using MediatR;
 
 namespace FinanceAPI.Endpoints;
@@ -13,6 +15,11 @@ public static class EmployeeEndpoints
             .WithTags("Employees")
             .WithOpenApi();
 
+        root.MapGet("/GetEmployees/", GetEmployees)
+            .Produces<List<EmployeeResponseDto>>()
+            .WithName("Get All Employees")
+            .WithSummary("Lookup all Employees registered in the system");
+
         root.MapGet("/GetEmployeeById/{id}", GetEmployeeById)
             .Produces<EmployeeResponseDto>()
             .WithName("Get Employee by Id")
@@ -24,6 +31,12 @@ public static class EmployeeEndpoints
             .WithSummary("Create an Employee");
 
         return app;
+    }
+
+    public static async Task<IResult> GetEmployees(IMediator mediator)
+    {
+        var employees = await mediator.Send(new GetEmployeesQuery());
+        return Results.Ok(employees);
     }
 
     public static async Task<IResult> GetEmployeeById(IMediator mediator, int id)
