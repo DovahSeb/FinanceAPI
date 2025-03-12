@@ -7,4 +7,5 @@ public interface IEmployee
     Task<EmployeeResponseDto> GetEmployeeById(int id, CancellationToken cancellationToken);
     Task<EmployeeResponseDto> CreateEmployee(EmployeeRequestDto employee, CancellationToken cancellationToken);
     Task<EmployeeResponseDto> UpdateEmployee(int Id, EmployeeRequestDto employee, CancellationToken cancellationToken);
+    Task DeactivateEmployee (int Id, CancellationToken cancellationToken);
 }
