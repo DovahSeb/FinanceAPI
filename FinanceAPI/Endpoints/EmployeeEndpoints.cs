@@ -68,7 +68,7 @@ public static class EmployeeEndpoints
         return Results.Ok(updateEmployee);
     }
 
-    public static async Task<IResult> DeactivateEmployee(IMediator mediator, int Id, CancellationToken cancellationToken)
+    public static async Task<IResult> DeactivateEmployee(IMediator mediator, int Id)
     {
         await mediator.Send(new DeactivateEmployeeCommand(Id));
         return Results.NoContent();
