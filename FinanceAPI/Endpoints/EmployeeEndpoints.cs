@@ -1,4 +1,5 @@
 ﻿using FinanceAPI.Application.Employee.Commands.CreateEmployee;
+using FinanceAPI.Application.Employee.Commands.DeactivateEmployee;
 using FinanceAPI.Application.Employee.Commands.UpdateEmployee;
 using FinanceAPI.Application.Employee.DTOs;
 using FinanceAPI.Application.Employee.Queries.GetEmployeeById;
@@ -30,10 +31,15 @@ public static class EmployeeEndpoints
             .WithName("Create Employee")
             .WithSummary("Create an Employee");
 
-        root.MapPost("/UpdateEmployee/", UpdateEmployee)
+        root.MapPut("/UpdateEmployee/{id}", UpdateEmployee)
             .Produces<EmployeeResponseDto>(StatusCodes.Status200OK)
             .WithName("Update Employee")
             .WithSummary("Update an Employee");
+
+        root.MapDelete("/DeactivateEmployee/{id}", DeactivateEmployee)
+            .Produces(StatusCodes.Status204NoContent)
+            .WithName("Deactivate Employee")
+            .WithSummary("Deactivate an Employee");
 
         return app;
     }
@@ -62,6 +68,11 @@ public static class EmployeeEndpoints
         return Results.Ok(updateEmployee);
     }
 
+    public static async Task<IResult> DeactivateEmployee(IMediator mediator, int Id, CancellationToken cancellationToken)
+    {
+        await mediator.Send(new DeactivateEmployeeCommand(Id));
+        return Results.NoContent();
+    }
     private static UpdateEmployeeCommand CreateUpdateCommand(int Id, UpdateEmployeeCommand command) =>
         new(Id, command.FirstName, command.LastName, command.DateOfBirth, command.Email, command.DateJoined, command.DepartmentId, command.PostTitleId);
 }

@@ -90,4 +90,18 @@ public sealed class EmployeePersistence : IEmployee
 
         return await GetEmployeeById(Id, cancellationToken);
     }
+
+    public async Task DeactivateEmployee(int Id, CancellationToken cancellationToken)
+    {
+        var existingEmployee = await _context.Employees
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Id == Id && x.Status != EntryStatus.Deleted, cancellationToken);
+
+        existingEmployee.IsActive = false;
+        existingEmployee.DateModified = DateTime.Now;
+        existingEmployee.Status = EntryStatus.Modified;
+
+        _context.Employees.Update(existingEmployee);
+        await _context.SaveChangesAsync(cancellationToken);
+    }
 }
