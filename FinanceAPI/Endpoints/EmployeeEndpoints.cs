@@ -1,8 +1,8 @@
 ﻿using FinanceAPI.Application.Employee.Commands.CreateEmployee;
+using FinanceAPI.Application.Employee.Commands.UpdateEmployee;
 using FinanceAPI.Application.Employee.DTOs;
 using FinanceAPI.Application.Employee.Queries.GetEmployeeById;
 using FinanceAPI.Application.Employee.Queries.GetEmployees;
-using FinanceAPI.Infrastructure.EmailService.BirthdayEmail;
 using MediatR;
 
 namespace FinanceAPI.Endpoints;
@@ -30,6 +30,11 @@ public static class EmployeeEndpoints
             .WithName("Create Employee")
             .WithSummary("Create an Employee");
 
+        root.MapPost("/UpdateEmployee/", UpdateEmployee)
+            .Produces<EmployeeResponseDto>(StatusCodes.Status200OK)
+            .WithName("Update Employee")
+            .WithSummary("Update an Employee");
+
         return app;
     }
 
@@ -50,4 +55,13 @@ public static class EmployeeEndpoints
         var newEmployee = await mediator.Send(command);
         return Results.Created($"/employees/{newEmployee.Id}", newEmployee);
     }
+
+    public static async Task<IResult> UpdateEmployee(IMediator mediator, int Id, UpdateEmployeeCommand command)
+    {
+        var updateEmployee = await mediator.Send(CreateUpdateCommand(Id, command));
+        return Results.Ok(updateEmployee);
+    }
+
+    private static UpdateEmployeeCommand CreateUpdateCommand(int Id, UpdateEmployeeCommand command) =>
+        new(Id, command.FirstName, command.LastName, command.DateOfBirth, command.Email, command.DateJoined, command.DepartmentId, command.PostTitleId);
 }
