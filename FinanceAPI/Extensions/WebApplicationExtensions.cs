@@ -29,6 +29,11 @@ public static class WebApplicationExtensions
 
         #endregion
 
+        #region Cors
+
+        app.UseCors();
+
+        #endregion Cors
 
         #region MinimalApi
 

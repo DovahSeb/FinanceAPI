@@ -20,6 +20,22 @@ public static class WebApplicationBuilderExtensions
 
         #endregion
 
+        #region Cors
+
+        builder.Services.AddCors(options =>
+        {
+            var allowedOrigin = builder.Configuration.GetValue<string>("CORSPolicy:AllowedOrigin");
+
+            options.AddDefaultPolicy(x => {
+                x.WithOrigins(allowedOrigin);
+                x.AllowAnyMethod();
+                x.AllowAnyHeader();
+                x.AllowCredentials();
+            });
+        });
+
+        #endregion Cors
+
         return builder;
     }
 }
