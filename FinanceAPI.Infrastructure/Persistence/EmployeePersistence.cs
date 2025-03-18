@@ -22,6 +22,7 @@ public sealed class EmployeePersistence : IEmployee
             .Where(x => x.Status != EntryStatus.Deleted)
             .Include(x => x.Department)
             .Include(x => x.PostTitle)
+            .OrderBy(x => x.LastName)
             .AsNoTracking()
             .ToListAsync(cancellationToken);
 

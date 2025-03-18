@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace FinanceAPI.Domain.Models;
-public class User : IdentityUser
+﻿namespace FinanceAPI.Domain.Models;
+public class User
 {
-    public required string FirstName { get; set; }
-    public required string LastName { get; set; }
+    public string FirstName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string PasswordHash { get; set; } = string.Empty;
     public DateTime DateCreated { get; init; }
     public DateTime DateModified { get; set; }
-    public required string Status { get; set; }
+    public string Status { get; set; } = string.Empty;
 }
