@@ -16,9 +16,9 @@ public static class ServiceCollectionExtensions
 
         services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(defaultConnectionString));
 
-        services.AddScoped<IEmployee, EmployeePersistence>();
-        services.AddScoped<IDepartment, DepartmentsPersistence>();
-        services.AddScoped<IPostTitle, PostTitlesPersistence>();
+        services.AddScoped<IEmployee, Employee>();
+        services.AddScoped<IDepartment, Departments>();
+        services.AddScoped<IPostTitle, PostTitles>();
 
         return services;
     }

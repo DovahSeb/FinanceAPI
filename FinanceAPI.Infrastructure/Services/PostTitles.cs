@@ -5,11 +5,11 @@ using FinanceAPI.Infrastructure.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinanceAPI.Infrastructure.Persistence;
-public sealed class PostTitlesPersistence : IPostTitle
+public sealed class PostTitles : IPostTitle
 {
     private readonly DatabaseContext _context;
 
-    public PostTitlesPersistence(DatabaseContext context)
+    public PostTitles(DatabaseContext context)
     {
         _context = context;
     }
