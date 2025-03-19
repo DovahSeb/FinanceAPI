@@ -4,12 +4,12 @@ using FinanceAPI.Infrastructure.Database;
 using FinanceAPI.Infrastructure.Mapping;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinanceAPI.Infrastructure.Persistence;
-public sealed class PostTitles : IPostTitle
+namespace FinanceAPI.Infrastructure.Services;
+public sealed class PostTitlesService : IPostTitle
 {
     private readonly DatabaseContext _context;
 
-    public PostTitles(DatabaseContext context)
+    public PostTitlesService(DatabaseContext context)
     {
         _context = context;
     }

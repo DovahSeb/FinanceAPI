@@ -6,12 +6,12 @@ using FinanceAPI.Infrastructure.Database;
 using FinanceAPI.Infrastructure.Mapping;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinanceAPI.Infrastructure.Persistence;
-public sealed class Employee : IEmployee
+namespace FinanceAPI.Infrastructure.Services;
+public sealed class EmployeeService : IEmployee
 {
     private readonly DatabaseContext _context;
 
-    public Employee(DatabaseContext context)
+    public EmployeeService(DatabaseContext context)
     {
         _context = context;
     }
@@ -49,7 +49,7 @@ public sealed class Employee : IEmployee
 
     public async Task<EmployeeResponseDto> CreateEmployee(EmployeeRequestDto employee, CancellationToken cancellationToken)
     {
-        var newEmployee = new Domain.Models.Employee
+        var newEmployee = new Employee
         {
             FirstName = employee.FirstName,
             LastName = employee.LastName,

@@ -4,12 +4,12 @@ using FinanceAPI.Infrastructure.Database;
 using FinanceAPI.Infrastructure.Mapping;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinanceAPI.Infrastructure.Persistence;
-public sealed class Departments : IDepartment
+namespace FinanceAPI.Infrastructure.Services;
+public sealed class DepartmentsService : IDepartment
 {
     private readonly DatabaseContext _context;
 
-    public Departments(DatabaseContext context)
+    public DepartmentsService(DatabaseContext context)
     {
         _context = context;
     }
