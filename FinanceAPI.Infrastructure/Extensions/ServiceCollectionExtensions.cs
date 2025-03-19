@@ -2,7 +2,7 @@
 using FinanceAPI.Application.Employee;
 using FinanceAPI.Application.PostTitle;
 using FinanceAPI.Infrastructure.Database;
-using FinanceAPI.Infrastructure.Persistence;
+using FinanceAPI.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
