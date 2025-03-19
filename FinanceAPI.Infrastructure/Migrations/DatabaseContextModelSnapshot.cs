@@ -40,7 +40,7 @@ namespace FinanceAPI.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
 
                     b.HasData(
                         new
@@ -216,7 +216,7 @@ namespace FinanceAPI.Infrastructure.Migrations
 
                     b.HasIndex("PostTitleId");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
                 });
 
             modelBuilder.Entity("FinanceAPI.Domain.Models.PostTitle", b =>
@@ -237,7 +237,7 @@ namespace FinanceAPI.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PostTitles");
+                    b.ToTable("PostTitles", (string)null);
 
                     b.HasData(
                         new
@@ -834,45 +834,6 @@ namespace FinanceAPI.Infrastructure.Migrations
                             Name = "Transport Officer",
                             Status = "I"
                         });
-                });
-
-            modelBuilder.Entity("FinanceAPI.Domain.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("FinanceAPI.Domain.Models.Employee", b =>
