@@ -37,6 +37,7 @@ public static class WebApplicationExtensions
 
         #region MinimalApi
 
+        app.MapAuthEndpoints();
         app.MapEmployeeEndpoints();
         app.MapReferencesEndpoints();
 

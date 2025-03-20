@@ -1,5 +1,7 @@
 ﻿using FinanceAPI.Application.Extensions;
+using FinanceAPI.Infrastructure.Database;
 using FinanceAPI.Infrastructure.Extensions;
+using Microsoft.AspNetCore.Identity;
 
 namespace FinanceAPI.Extensions;
 
@@ -10,6 +12,18 @@ public static class WebApplicationBuilderExtensions
         #region OpenAPI
 
         builder.Services.AddOpenApi();
+
+        #endregion
+
+        #region .Net Identity Provider
+
+        builder.Services.AddIdentityApiEndpoints<IdentityUser>(opt =>
+        {
+            opt.User.RequireUniqueEmail = true;
+            opt.Password.RequiredLength = 8;
+        })
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<DatabaseContext>();
 
         #endregion
 
