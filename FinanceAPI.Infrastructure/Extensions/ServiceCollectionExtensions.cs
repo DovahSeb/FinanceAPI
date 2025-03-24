@@ -4,6 +4,7 @@ using FinanceAPI.Application.Employee;
 using FinanceAPI.Application.PostTitle;
 using FinanceAPI.Infrastructure.Database;
 using FinanceAPI.Infrastructure.Email;
+using FinanceAPI.Infrastructure.Email.Interface;
 using FinanceAPI.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +25,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IEmployee, EmployeeService>();
         services.AddScoped<IDepartment, DepartmentsService>();
         services.AddScoped<IPostTitle, PostTitlesService>();
+
+        services.AddTransient<IEmailService, EmailService>();
 
         return services;
     }
