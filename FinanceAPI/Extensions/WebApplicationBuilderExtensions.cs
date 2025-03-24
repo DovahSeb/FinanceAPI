@@ -15,6 +15,12 @@ public static class WebApplicationBuilderExtensions
 
         #endregion
 
+        #region Authorization Policy
+
+        builder.Services.AddAuthorization();
+
+        #endregion
+
         #region .Net Identity Provider
 
         builder.Services.AddIdentityApiEndpoints<IdentityUser>(opt =>

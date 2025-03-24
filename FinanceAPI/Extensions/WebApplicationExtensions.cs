@@ -35,6 +35,12 @@ public static class WebApplicationExtensions
 
         #endregion Cors
 
+        #region Authorization Policy
+
+        app.UseAuthorization();
+
+        #endregion
+
         #region MinimalApi
 
         app.MapAuthEndpoints();
