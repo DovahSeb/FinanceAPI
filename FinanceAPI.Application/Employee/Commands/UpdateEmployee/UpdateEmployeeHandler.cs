@@ -6,7 +6,7 @@ public sealed class UpdateEmployeeHandler(IEmployee employee) : IRequestHandler<
 {
     public async Task<EmployeeResponseDto> Handle(UpdateEmployeeCommand command, CancellationToken cancellationToken)
     {
-        var updateEmployee = new EmployeeRequestDto(command.FirstName, command.LastName, command.DateOfBirth, command.Email, command.DateJoined, command.DepartmentId, command.PostTitleId);
+        var updateEmployee = new EmployeeRequestDto(command.FirstName, command.OtherName, command.LastName, command.DateOfBirth, command.Email, command.DateJoined, command.DepartmentId, command.PostTitleId);
         return await employee.UpdateEmployee(command.Id, updateEmployee, cancellationToken);
     }
 }

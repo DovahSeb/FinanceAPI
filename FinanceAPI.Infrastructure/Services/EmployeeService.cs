@@ -53,6 +53,7 @@ public sealed class EmployeeService : IEmployee
         {
             FirstName = employee.FirstName,
             LastName = employee.LastName,
+            OtherName = employee.OtherName,
             DateOfBirth = employee.DateOfBirth,
             Email = employee.Email,
             DateJoined = employee.DateJoined,
@@ -78,6 +79,7 @@ public sealed class EmployeeService : IEmployee
 
         existingEmployee.FirstName = employee.FirstName;
         existingEmployee.LastName = employee.LastName;
+        existingEmployee.OtherName = employee.OtherName;
         existingEmployee.DateOfBirth = employee.DateOfBirth;
         existingEmployee.Email = employee.Email;
         existingEmployee.DateJoined = employee.DateJoined;

@@ -74,5 +74,5 @@ public static class EmployeeEndpoints
         return Results.NoContent();
     }
     private static UpdateEmployeeCommand CreateUpdateCommand(int Id, UpdateEmployeeCommand command) =>
-        new(Id, command.FirstName, command.LastName, command.DateOfBirth, command.Email, command.DateJoined, command.DepartmentId, command.PostTitleId);
+        new(Id, command.FirstName, command.OtherName, command.LastName, command.DateOfBirth, command.Email, command.DateJoined, command.DepartmentId, command.PostTitleId);
 }
