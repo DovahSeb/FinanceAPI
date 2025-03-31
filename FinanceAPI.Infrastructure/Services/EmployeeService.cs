@@ -52,8 +52,8 @@ public sealed class EmployeeService : IEmployee
         var newEmployee = new Employee
         {
             FirstName = employee.FirstName,
-            LastName = employee.LastName,
             OtherName = employee.OtherName,
+            LastName = employee.LastName.ToUpper(),
             DateOfBirth = employee.DateOfBirth,
             Email = employee.Email,
             DateJoined = employee.DateJoined,
@@ -78,7 +78,7 @@ public sealed class EmployeeService : IEmployee
             .FirstOrDefaultAsync(x => x.Id == Id && x.Status != EntryStatus.Deleted, cancellationToken);
 
         existingEmployee.FirstName = employee.FirstName;
-        existingEmployee.LastName = employee.LastName;
+        existingEmployee.LastName = employee.LastName.ToUpper();
         existingEmployee.OtherName = employee.OtherName;
         existingEmployee.DateOfBirth = employee.DateOfBirth;
         existingEmployee.Email = employee.Email;
