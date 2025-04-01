@@ -1,5 +1,6 @@
 ﻿using FinanceAPI.Endpoints;
 using Scalar.AspNetCore;
+using Serilog;
 using System.Globalization;
 
 namespace FinanceAPI.Extensions;
@@ -8,6 +9,12 @@ public static class WebApplicationExtensions
 {
     public static WebApplication ConfigureApplication(this WebApplication app)
     {
+        #region
+
+        app.UseSerilogRequestLogging();
+
+        #endregion
+
         #region API Configuration
 
         app.UseHttpsRedirection();

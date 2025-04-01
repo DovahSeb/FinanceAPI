@@ -1,4 +1,5 @@
 using FinanceAPI.Extensions;
+using Serilog;
 
 var builder = WebApplication
     .CreateBuilder(args)
@@ -8,4 +9,16 @@ var app = builder
     .Build()
     .ConfigureApplication();
 
-app.Run();
+try
+{
+    Log.Information("FinancePortalAPI Starting Up");
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "FinancePortalAPI Terminated Unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
