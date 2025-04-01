@@ -9,7 +9,6 @@ public class NotFoundException(string message) : Exception(message)
         {
             Throw(entityType);
         }
-
     }
 
     public static void Throw(EntityType entityType)

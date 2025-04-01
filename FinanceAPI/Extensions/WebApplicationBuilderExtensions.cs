@@ -1,4 +1,5 @@
 ﻿using FinanceAPI.Application.Extensions;
+using FinanceAPI.Exceptions;
 using FinanceAPI.Infrastructure.Database;
 using FinanceAPI.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Identity;
@@ -30,6 +31,13 @@ public static class WebApplicationBuilderExtensions
         })
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<DatabaseContext>();
+
+        #endregion
+
+        #region Exception Handling
+
+        builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+        builder.Services.AddProblemDetails();
 
         #endregion
 

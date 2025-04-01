@@ -35,6 +35,12 @@ public static class WebApplicationExtensions
 
         #endregion Cors
 
+        #region Exception Handling
+
+        app.UseExceptionHandler();
+
+        #endregion
+
         #region Authorization Policy
 
         app.UseAuthorization();
