@@ -1,4 +1,5 @@
 ﻿using FinanceAPI.Application.Common.Enums;
+using FinanceAPI.Application.Common.Exceptions;
 using FinanceAPI.Application.Employee;
 using FinanceAPI.Application.Employee.DTOs;
 using FinanceAPI.Domain.Models;
@@ -30,6 +31,11 @@ public sealed class EmployeeService : IEmployee
             .Select(x => x.MapToEmployeeResponseDto())
             .ToList();
 
+        if (!employeesDto.Any())
+        {
+            return [];
+        }
+
         return employeesDto;
     }
 
@@ -41,6 +47,8 @@ public sealed class EmployeeService : IEmployee
             .Include(x => x.PostTitle)
             .AsNoTracking()
             .FirstOrDefaultAsync(cancellationToken);
+
+        NotFoundException.ThrowIfNull(employee, EntityType.Employee);
 
         var employeeDto = employee.MapToEmployeeResponseDto();
 
@@ -77,6 +85,8 @@ public sealed class EmployeeService : IEmployee
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == Id && x.Status != EntryStatus.Deleted, cancellationToken);
 
+        NotFoundException.ThrowIfNull(existingEmployee, EntityType.Employee);
+
         existingEmployee.FirstName = employee.FirstName;
         existingEmployee.LastName = employee.LastName.ToUpper();
         existingEmployee.OtherName = employee.OtherName;
@@ -99,6 +109,8 @@ public sealed class EmployeeService : IEmployee
         var existingEmployee = await _context.Employees
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == Id && x.Status != EntryStatus.Deleted, cancellationToken);
+
+        NotFoundException.ThrowIfNull(existingEmployee, EntityType.Employee);
 
         existingEmployee.IsActive = false;
         existingEmployee.DateModified = DateTime.Now;
