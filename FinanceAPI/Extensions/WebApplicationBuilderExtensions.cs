@@ -53,6 +53,8 @@ public static class WebApplicationBuilderExtensions
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<DatabaseContext>();
 
+        builder.Services.AddHttpContextAccessor();
+
         #endregion
 
         #region Exception Handling
