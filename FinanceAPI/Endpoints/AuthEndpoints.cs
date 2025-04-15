@@ -14,7 +14,7 @@ public static class AuthEndpoints
 
         var root = app.MapGroup("/api/auth").WithTags("Auth").WithOpenApi();
 
-        root.MapPost("/change-passowrd", ChangePassword)
+        root.MapPost("/change-password", ChangePassword)
             .WithName("Change User Password")
             .RequireAuthorization();
 
